@@ -341,7 +341,9 @@ export default class MoviesDAO {
       // TODO Ticket: Error Handling
       // Catch the InvalidId error by string matching, and then handle it.
       console.error(`Something went wrong in getMovieByID: ${e}`)
-      throw e
+      if (e.toString().includes("must be a single String")) {
+        return null
+      }
     }
   }
 }
